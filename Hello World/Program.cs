@@ -10,22 +10,24 @@ namespace Hello_World
     {
         static void Main(string[] args)
         {
-            string myValue = "Hello World";
-            string anotherVariable = "Hello Again";
+            int num1 = 0;
+            int num2 = 0;
+            int answer = 0;
 
-            int number1 = 5;
-            int number2 = 5;
+            Console.WriteLine("Enter a number");
+            string sNum1 = Console.ReadLine();
 
-            string answer = number1.ToString() + number2.ToString();
+            Console.WriteLine("Enter another number");
+            string sNum2 = Console.ReadLine();
 
-            Console.WriteLine(answer);
+            Int32.TryParse(sNum1, out num1);
+            Int32.TryParse(sNum2, out num2);
 
-            bool boolVar = false;
-                        
-            //Console.WriteLine(myValue);
-            //Console.WriteLine(anotherVariable);
-            //anotherVariable = myValue;
-            //Console.WriteLine(anotherVariable);
+            answer = num1 + num2;
+
+            Console.WriteLine("The answer is " + answer);
+
+            Console.ReadLine();
         }
     }
 }
