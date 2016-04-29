@@ -8,24 +8,67 @@ namespace Hello_World
 {
     class Program
     {
+            
+        enum PetType
+        {
+            Dog,
+            Duck
+        }
+
+        class PetClass
+        {
+            public int Legs;
+            public PetType Type;
+            public string Name;
+            public bool HasFur;
+        }
+
+        struct PetStruct
+        {
+            public int Legs;
+            public PetType Type;
+            public string Name;
+            public bool HasFur;
+        }
+
+        static void MultiplyLegs(PetStruct petStruct, PetClass petClass)
+        {
+            petStruct.Legs = petStruct.Legs * 2;
+            petClass.Legs = petClass.Legs * 2;
+
+            Console.WriteLine("Internal method) A " + petStruct.Type + " has " + petStruct.Legs);
+            Console.WriteLine("Internal method) A " + petClass.Type + " has " + petClass.Legs);
+        }
+
         static void Main(string[] args)
         {
-            int num1 = 0;
-            int num2 = 0;
-            int answer = 0;
+            PetStruct dog = new PetStruct();
+            dog.Type = PetType.Dog;
+            dog.Legs = 4;
+            dog.HasFur = true;
+            Console.WriteLine("A " + dog.Type + " has " + dog.Legs + " legs");
 
-            Console.WriteLine("Enter a number");
-            string sNum1 = Console.ReadLine();
+            PetClass duck = new PetClass();
+            duck.Type = PetType.Duck;
+            duck.Legs = 2;
+            duck.HasFur = false;
+            Console.WriteLine("A " + duck.Type + " has " + duck.Legs + " legs");
 
-            Console.WriteLine("Enter another number");
-            string sNum2 = Console.ReadLine();
+            //MultiplyLegs(dog, duck);
+            //Console.WriteLine("A " + dog.Type + " has " + dog.Legs);
+            //Console.WriteLine("A " + duck.Type + " has " + duck.Legs);
 
-            Int32.TryParse(sNum1, out num1);
-            Int32.TryParse(sNum2, out num2);
+            PetStruct copiedDog = dog;
+            PetClass copiedDuck = duck;
 
-            answer = num1 + num2;
+            copiedDog.Legs = copiedDog.Legs * 2;
+            copiedDuck.Legs = copiedDuck.Legs * 2;
 
-            Console.WriteLine("The answer is " + answer);
+            Console.WriteLine("A " + dog.Type + " has " + dog.Legs);
+            Console.WriteLine("A " + duck.Type + " has " + duck.Legs);
+
+            Console.WriteLine("A " + copiedDog.Type + " has " + copiedDog.Legs);
+            Console.WriteLine("A " + copiedDuck.Type + " has " + copiedDuck.Legs);
 
             Console.ReadLine();
         }
